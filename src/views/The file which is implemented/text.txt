@@ -1,0 +1,10 @@
+npm i @material-ui/lab
+
+npm i material-table
+
+npm i @tinymce/tinymce-react
+
+
+
+
+
