@@ -52,16 +52,16 @@ const PersonalInfo = () => {
       });
     return(
         <Container fixed style={{marginBottom:'100px'}}>
-            <h1>Personal Info</h1>
-                <Typography variant="caption" display="block" gutterBottom>
+        <Typography  component="span" variant="h1" display="block" gutterBottom>Personal Info</Typography>
+                <Typography  component="span" variant="caption" display="block" gutterBottom>
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,<br/> when an unknown printer took a galley of type and scrambled it to make a type specimen book.
             </Typography>
             <br/>
             <Divider/>
                 <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                         <Grid item lg={4}>
-                            <Typography variant="h6" gutterBottom>
-                                    First Name <span style={{color:"red"}}>*</span>
+                            <Typography  component="span" variant="h6" gutterBottom>
+                                    First Name 
                             </Typography>
                         </Grid>
                         <Grid item lg={8} sm={12} xs={12}>
@@ -83,8 +83,8 @@ const PersonalInfo = () => {
                 </Grid>
                 <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                         <Grid item lg={4}>
-                            <Typography variant="h6" gutterBottom>
-                                    Display Name <span style={{color:"red"}}>*</span>
+                            <Typography  component="span" variant="h6" gutterBottom>
+                                    Display Name
                             </Typography>
                         </Grid>
                         <Grid item lg={8} sm={12} xs={12}>
@@ -99,7 +99,7 @@ const PersonalInfo = () => {
                 </Grid>
                 <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                         <Grid item lg={4}>
-                            <Typography variant="h6" gutterBottom>
+                            <Typography  component="span" variant="h6" gutterBottom>
                                     Location <span style={{color:"red"}}>*</span>
                             </Typography>
                         </Grid>
@@ -128,7 +128,7 @@ const PersonalInfo = () => {
                 </Grid>
                 <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                             <Grid item lg={4} sm={12} xs={12}>
-                                <Typography variant="h6" gutterBottom>
+                                <Typography  component="span" variant="h6" gutterBottom>
                                         Profile Picture  <span style={{color:"red"}}>*</span>
                                 </Typography>
                             </Grid>
@@ -143,7 +143,7 @@ const PersonalInfo = () => {
                 </Grid>
                 <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                             <Grid item lg={4}>
-                                <Typography variant="h6" gutterBottom>
+                                <Typography  component="span" variant="h6" gutterBottom>
                                         Description  <span style={{color:"red"}}>*</span>
                                 </Typography>
                             </Grid>
@@ -161,7 +161,7 @@ const PersonalInfo = () => {
 
                 <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                             <Grid item lg={4}>
-                                <Typography variant="h6" gutterBottom>
+                                <Typography  component="span" variant="h6" gutterBottom>
                                         Languages  <span style={{color:"red"}}>*</span>
                                 </Typography>
                             </Grid>
@@ -213,12 +213,12 @@ const PersonalInfo = () => {
                 </Grid>
                 <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                             <Grid item lg={4} sm={12} xs={12}>
-                                <Typography variant="h6" gutterBottom>
+                                <Typography  component="span" variant="h6" gutterBottom>
                                         Your Skills  <span style={{color:"red"}}>*</span>
                                 </Typography>
                             </Grid>
                             <Grid item lg={8} sm={12}>
-                                        <Typography variant="subtitle2" gutterBottom>
+                                        <Typography  component="span" variant="subtitle2" gutterBottom>
                                                 Choose two of five of your best skill in programming & Tech:
                                         </Typography>
                                         <Grid container>

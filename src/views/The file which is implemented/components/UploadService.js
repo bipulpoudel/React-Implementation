@@ -116,7 +116,7 @@ const UploadService = () => {
     return(
         <Container fixed style={{marginBottom:'100px'}}>
     <h1>Upload Your Service</h1>
-        <Typography variant="caption" display="block" gutterBottom>
+        <Typography  component="span" variant="caption" display="block" gutterBottom>
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,<br/> when an unknown printer took a galley of type and scrambled it to make a type specimen book.
     </Typography>
     <br/>
@@ -124,7 +124,7 @@ const UploadService = () => {
 
     <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                 <Grid item lg={4}>
-                    <Typography variant="h6" gutterBottom>
+                    <Typography  component="span" variant="h6" gutterBottom>
                         Upload Thumbnail  
                     </Typography>
                 </Grid>
@@ -138,7 +138,7 @@ const UploadService = () => {
         </Grid>
         <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                         <Grid item lg={4}>
-                            <Typography variant="h6" gutterBottom>
+                            <Typography  component="span" variant="h6" gutterBottom>
                                     Name of Service<span style={{color:"red"}}>*</span>
                             </Typography>
                         </Grid>
@@ -154,7 +154,7 @@ const UploadService = () => {
             </Grid>
             <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                         <Grid item lg={4}>
-                            <Typography variant="h6" gutterBottom>
+                            <Typography  component="span" variant="h6" gutterBottom>
                                     Category of Service<span style={{color:"red"}}>*</span>
                             </Typography>
                         </Grid>
@@ -214,7 +214,7 @@ const UploadService = () => {
 
             <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                             <Grid item lg={4}>
-                                <Typography variant="h6" gutterBottom>
+                                <Typography  component="span" variant="h6" gutterBottom>
                                         Job Description  <span style={{color:"red"}}>*</span>
                                 </Typography>
                             </Grid>
@@ -233,7 +233,7 @@ const UploadService = () => {
 
                 <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                             <Grid item lg={4}>
-                                <Typography variant="h6" gutterBottom>
+                                <Typography  component="span" variant="h6" gutterBottom>
                                         Pricing  <span style={{color:"red"}}>*</span>
                                 </Typography>
                             </Grid>
@@ -262,7 +262,7 @@ const UploadService = () => {
 
                 <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                             <Grid item lg={4}>
-                                <Typography variant="h6" gutterBottom>
+                                <Typography  component="span" variant="h6" gutterBottom>
                                         FAQs  <span style={{color:"red"}}>*</span>
                                 </Typography>
                             </Grid>
@@ -272,7 +272,7 @@ const UploadService = () => {
                 </Grid>
                 <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>
                             <Grid item lg={4}>
-                                <Typography variant="h6" gutterBottom>
+                                <Typography  component="span" variant="h6" gutterBottom>
                                         Upload ShowCase  <span style={{color:"red"}}>*</span>
                                 </Typography>
                             </Grid>

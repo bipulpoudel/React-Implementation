@@ -40,10 +40,10 @@ const Uploadshowcase = () =>{
     }
     return(
         <>
-        <Typography  variant="subtitle2" gutterBottom>
+        <Typography component="span"  variant="subtitle2" gutterBottom>
             Gig Photos
         </Typography>
-        <Typography variant="caption" component="h2">
+        <Typography  variant="caption" component="h2">
             Upload Photos that describe or are related to your GIGS.
         </Typography>
         <br/>
@@ -77,10 +77,10 @@ const Uploadshowcase = () =>{
             </Fab>
         </Tooltip>
         <br/><br/><br/>
-        <Typography variant="subtitle2" gutterBottom>
+        <Typography  variant="subtitle2" gutterBottom>
             Gig Video
         </Typography>
-        <Typography variant="caption" component="h2">
+        <Typography  variant="caption" component="h2">
             Add a relevant, high quality video that best showcase your Gigs
         </Typography>
         {files ? <Table

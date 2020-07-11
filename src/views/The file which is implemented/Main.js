@@ -77,14 +77,14 @@ export default function Main() {
       <div>
         {activeStep === steps.length ? (
           <div>
-            <Typography className={classes.instructions}>All steps completed</Typography>
+            <Typography component={'div'} className={classes.instructions}>All steps completed</Typography>
             <Button onClick={handleReset}>Reset</Button>
           </div>
         ) : (
           <div>
-            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            <Typography component={'div'} className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             <Grid container style={{paddingTop:'10px',paddingBottom:'20px'}}>
-                <Grid item lg={9} md={8} sm={0}  xs={0}>
+                <Grid item lg={9} md={8} sm={1}  xs={1}>
                 </Grid>
                 <Grid item lg={3} md={4} sm={12}>
                     <div>
