@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { Divider } from '@material-ui/core';
@@ -6,7 +6,6 @@ import { Divider } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
-import MaterialTable from 'material-table';
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -23,10 +22,55 @@ import Check from "@material-ui/icons/Check";
 import styles from "assets/jss/material-kit-pro-react/customCheckboxRadioSwitchStyle.js";
 
 
-const useStyles = makeStyles(styles);
+
+
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+
+
+
+import Tooltip from '@material-ui/core/Tooltip';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import ClearIcon from '@material-ui/icons/Clear';
+import DoneIcon from '@material-ui/icons/Done';
+
+
+
+const useStyles = makeStyles(styles,{
+    table: {
+      minWidth: 650,
+    },
+  });
+  
+  function createData(language, level) {
+    return { language, level };
+  }
+  
+  const rows = [
+  ];
+  
+  
 
 const PersonalInfo = () => {
-
+    const [refresh,setRefresh] = useState(false);
+    const [value,setValue] = useState(false);
+    const [language,setLanguage] = useState('')
+    const [content,setContent] = useState('')
+    const changeVal =() => {
+        setValue(!value);
+      }
+    const changeHandler = () => {
+    setRefresh(!refresh);
+    rows.push(createData(`${language}`, `${content}`));
+    setLanguage('');setContent('');
+    }
     const [checked, setChecked] = React.useState([24, 22]);
     const handleToggle = value => {
       const currentIndex = checked.indexOf(value);
@@ -40,16 +84,6 @@ const PersonalInfo = () => {
       setChecked(newChecked);
     };
     const classes = useStyles();
-    
-    const [state, setState] = useState({
-        columns: [
-          { title: 'Language', field: 'language' },
-          { title: 'Level', field: 'level' },
-        ],
-        data: [
-          { language: 'English', level: 'Expert' },
-        ],
-      });
     return(
         <Container fixed style={{marginBottom:'100px'}}>
         <Typography  component="span" variant="h1" display="block" gutterBottom>Personal Info</Typography>
@@ -166,49 +200,58 @@ const PersonalInfo = () => {
                                 </Typography>
                             </Grid>
                             <Grid item lg={8}>
-                            <MaterialTable
-                                    options={{paging: false,search:false}}
-                                    title="Languages"
-                                    columns={state.columns}
-                                    data={state.data}
-                                    editable={{
-                                    onRowAdd: (newData) =>
-                                        new Promise((resolve) => {
-                                        setTimeout(() => {
-                                            resolve();
-                                            setState((prevState) => {
-                                            const data = [...prevState.data];
-                                            data.push(newData);
-                                            return { ...prevState, data };
-                                            });
-                                        }, 600);
-                                        }),
-                                    onRowUpdate: (newData, oldData) =>
-                                        new Promise((resolve) => {
-                                        setTimeout(() => {
-                                            resolve();
-                                            if (oldData) {
-                                            setState((prevState) => {
-                                                const data = [...prevState.data];
-                                                data[data.indexOf(oldData)] = newData;
-                                                return { ...prevState, data };
-                                            });
-                                            }
-                                        }, 600);
-                                        }),
-                                    onRowDelete: (oldData) =>
-                                        new Promise((resolve) => {
-                                        setTimeout(() => {
-                                            resolve();
-                                            setState((prevState) => {
-                                            const data = [...prevState.data];
-                                            data.splice(data.indexOf(oldData), 1);
-                                            return { ...prevState, data };
-                                            });
-                                        }, 600);
-                                        }),
-                                    }}
+                            {value ?<><Tooltip title="Cancel" aria-label="cancel">
+                                    <Fab color="secondary" className={classes.fab} onClick={changeVal}>
+                                    <ClearIcon/>
+                                    </Fab>
+                                </Tooltip>
+                                <Tooltip title="Add" aria-label="add" onClick={changeHandler}>
+                                    <Fab style={{backgroundColor:'lightgreen',color:'white'}} className={classes.fab}>
+                                    <DoneIcon/>
+                                    </Fab>
+                                </Tooltip></>:<Tooltip title="Add" aria-label="add" onClick={changeVal}>
+                                <Fab color="primary" className={classes.fab}>
+                                    <AddIcon />
+                                </Fab>
+                                </Tooltip>}
+                                <br/>
+                                <br/>
+                                    {value && <><TextField
+                                    placeholder="Add a language"
+                                    variant="outlined"
+                                    fullWidth={true}
+                                    value={language}
+                                    onChange={e => setLanguage(e.target.value)}
                                 />
+                                <br/>
+                                <br/>
+                                <TextField
+                                    placeholder="How much proficient you are with that language?"
+                                    variant="outlined"
+                                    fullWidth={true}
+                                    value={content}
+                                    onChange={e => setContent(e.target.value)}
+                                /><br/><br/></>}
+                                <TableContainer component={Paper}>
+                                <Table className={classes.table} aria-label="simple table">
+                                  <TableHead>
+                                    <TableRow>
+                                      <TableCell>Language</TableCell>
+                                      <TableCell align="right">Level</TableCell>
+                                    </TableRow>
+                                  </TableHead>
+                                  <TableBody>
+                                    {rows.map((row) => (
+                                      <TableRow key={row.language}>
+                                        <TableCell component="th" scope="row">
+                                          {row.language}
+                                        </TableCell>
+                                        <TableCell align="right">{row.level}</TableCell>
+                                      </TableRow>
+                                    ))}
+                                  </TableBody>
+                                </Table>
+                              </TableContainer>
                             </Grid>
                 </Grid>
                 <Grid container spacing={5} style={{paddingTop:'20px',paddingBottom:'20px'}}>

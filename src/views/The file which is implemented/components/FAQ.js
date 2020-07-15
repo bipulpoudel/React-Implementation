@@ -1,5 +1,5 @@
 
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import Accordion from "components/Accordion/Accordion.js";
 import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
@@ -20,12 +20,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FAQs() {
-  const classes = useStyles();
-  const [value,setValue] = useState(false);
 
+const faq = [{title: "Demo Question 1?",content:"Demo answer for question 1."}];
+
+export default function FAQs() {
+  const [refresh,setRefresh] = useState(true);
+  useEffect(()=>{
+    console.log('I am working');
+  },[refresh])
+  const classes = useStyles();
+  
+  const [value,setValue] = useState(false);
+  const [title,setTitle] = useState('')
+  const [content,setContent] = useState('')
   const changeVal =() => {
     setValue(!value);
+  }
+  const changeHandler = () => {
+    faq.push({title:`${title}`,content:`${content}`});
+    setRefresh(!refresh);
+    setTitle('');setContent('');
   }
   return (
     <>
@@ -34,9 +48,9 @@ export default function FAQs() {
       <ClearIcon/>
     </Fab>
   </Tooltip>
-  <Tooltip title="Add" aria-label="add">
+  <Tooltip title="Add" aria-label="add" onClick={changeHandler}>
     <Fab style={{backgroundColor:'lightgreen',color:'white'}} className={classes.fab}>
-      <DoneIcon />
+      <DoneIcon/>
     </Fab>
   </Tooltip></>:<Tooltip title="Add" aria-label="add" onClick={changeVal}>
   <Fab color="primary" className={classes.fab}>
@@ -47,6 +61,8 @@ export default function FAQs() {
       placeholder="Add a Question"
       variant="outlined"
       fullWidth={true}
+      value={title}
+      onChange={e => setTitle(e.target.value)}
   />
   <br/>
   <br/>
@@ -54,17 +70,13 @@ export default function FAQs() {
       placeholder="Add a Answer"
       variant="outlined"
       fullWidth={true}
+      value={content}
+      onChange={e => setContent(e.target.value)}
   /></>}
     <h6>Add question and answers for the buyers:</h6>
     <Accordion
       active={0}
-      collapses={[
-      {
-        title: "Demo Question 1?",
-        content:
-        "Demo answer for question 1."
-      }
-    ]}
+      collapses={faq}
 />
 </>
   );

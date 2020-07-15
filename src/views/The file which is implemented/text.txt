@@ -4,7 +4,7 @@ npm i material-table
 
 npm i @tinymce/tinymce-react
 
-
+$ npm install tubular-react --save
 
 
 
