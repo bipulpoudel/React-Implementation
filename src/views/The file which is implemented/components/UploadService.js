@@ -2,17 +2,15 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { Divider } from '@material-ui/core';
-import { withStyles,makeStyles,useTheme } from '@material-ui/core/styles';
+import {makeStyles,useTheme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import ImageUpload from "components/CustomUpload/ImageUpload.js";
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import InputBase from '@material-ui/core/InputBase';
 import Input from '@material-ui/core/Input';
 import clsx from 'clsx';
-import InputLabel from '@material-ui/core/InputLabel';
 
 import FAQ from './FAQ';
 import Uploadshowcase from './Uploadshowcase'
@@ -70,48 +68,19 @@ const names = [
   
 
 
-const BootstrapInput = withStyles((theme) => ({
-    root: {
-      'label + &': {
-        marginTop: theme.spacing(3),
-      },
-    },
-    input: {
-      borderRadius: 4,
-      position: 'relative',
-      backgroundColor: theme.palette.background.paper,
-      border: '1px solid #ced4da',
-      fontSize: 16,
-      padding: '10px 26px 10px 12px',
-      transition: theme.transitions.create(['border-color', 'box-shadow']),
-      // Use the system font instead of the default Roboto font.
-      fontFamily: [
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(','),
-      '&:focus': {
-        borderRadius: 4,
-        borderColor: '#80bdff',
-        boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-      },
-    },
-  }))(InputBase);
+
 
 
 const UploadService = () => {
     const classes = useStyles();
     const [personName, setPersonName] = React.useState([]);
-    const [age, setAge] = React.useState('');
+    const [priceType, setPriceType] = React.useState('');
+    const [service, setService] = React.useState('');
     const handleChange = (event) => {
-      setAge(event.target.value);
+      setService(event.target.value);
+    };
+    const handleChangePriceType = (event) => {
+      setPriceType(event.target.value);
     };
     const handleChangePerson = (event) => {
       setPersonName(event.target.value);
@@ -164,25 +133,24 @@ const UploadService = () => {
                         </Grid>
                         <Grid item lg={8} sm={12} xs={12}>
                             <Grid container>
-                             <Grid item lg={6}>
-                                <FormControl>
-                                        <Select
-                                                style={{minWidth:'300px'}}
-                                                labelId="demo-customized-select-label"
-                                                id="demo-customized-select"
-                                                input={<BootstrapInput />}
-                                                >
-                                                <MenuItem value="Please Select the Category">
-                                                    <em>None</em>
-                                                </MenuItem>
-                                                <MenuItem value={10}>Ten</MenuItem>
-                                                <MenuItem value={20}>Twenty</MenuItem>
-                                                <MenuItem value={30}>Thirty</MenuItem>
-                                        </Select>
-                            </FormControl>
+                             <Grid item lg={5}>
+                             <FormControl variant="outlined" className={classes.formControl} style={{minWidth:'250px'}}>
+                                <Select
+                                  id="demo-simple-select-outlined"
+                                  value={service}
+                                  onChange={handleChange}
+                                >
+                                  <MenuItem value="">
+                                    <em>None</em>
+                                  </MenuItem>
+                                  <MenuItem value={10}>Ten</MenuItem>
+                                  <MenuItem value={20}>Twenty</MenuItem>
+                                  <MenuItem value={30}>Thirty</MenuItem>
+                                </Select>
+                              </FormControl>
                             </Grid>
                             <Grid item lg={6}>
-                                  <FormControl variant="outlined" style={{marginTop:'-2px'}} className={clsx(classes.formControl, classes.noLabel)}>
+                                  <FormControl variant="outlined" style={{marginTop:'10px'}} className={clsx(classes.formControl, classes.noLabel)}>
                                   <Select
                                     multiple
                                     displayEmpty
@@ -247,14 +215,12 @@ const UploadService = () => {
                                         placeholder="Mention Price"
                                         variant="outlined"
                                     />
-                                    <FormControl variant="outlined" className={classes.formControl}>
-                                      <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+                                    <FormControl variant="outlined" className={classes.formControl} style={{marginTop:'-1px'}}>
                                       <Select
                                         labelId="demo-simple-select-outlined-label"
                                         id="demo-simple-select-outlined"
-                                        value={age}
-                                        onChange={handleChange}
-                                        label="Age"
+                                        value={priceType}
+                                        onChange={handleChangePriceType}
                                       >
                                         <MenuItem value="">
                                           <em>None</em>
