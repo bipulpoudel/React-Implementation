@@ -12,6 +12,7 @@ import Select from '@material-ui/core/Select';
 import InputBase from '@material-ui/core/InputBase';
 import Input from '@material-ui/core/Input';
 import clsx from 'clsx';
+import InputLabel from '@material-ui/core/InputLabel';
 
 import FAQ from './FAQ';
 import Uploadshowcase from './Uploadshowcase'
@@ -108,8 +109,11 @@ const BootstrapInput = withStyles((theme) => ({
 const UploadService = () => {
     const classes = useStyles();
     const [personName, setPersonName] = React.useState([]);
-
+    const [age, setAge] = React.useState('');
     const handleChange = (event) => {
+      setAge(event.target.value);
+    };
+    const handleChangePerson = (event) => {
       setPersonName(event.target.value);
     };
     const theme = useTheme();
@@ -159,7 +163,7 @@ const UploadService = () => {
                             </Typography>
                         </Grid>
                         <Grid item lg={8} sm={12} xs={12}>
-                            <Grid container lg={12}>
+                            <Grid container>
                              <Grid item lg={6}>
                                 <FormControl>
                                         <Select
@@ -183,7 +187,7 @@ const UploadService = () => {
                                     multiple
                                     displayEmpty
                                     value={personName}
-                                    onChange={handleChange}
+                                    onChange={handleChangePerson}
                                     input={<Input />}
                                     renderValue={(selected) => {
                                       if (selected.length === 0) {
@@ -243,19 +247,22 @@ const UploadService = () => {
                                         placeholder="Mention Price"
                                         variant="outlined"
                                     />
-                                    <FormControl>
-                                                <Select
-                                                        labelId="demo-customized-select-label"
-                                                        id="demo-customized-select"
-                                                        input={<BootstrapInput />}
-                                                        >
-                                                        <MenuItem value="Please Select the Category">
-                                                            <em>None</em>
-                                                        </MenuItem>
-                                                        <MenuItem value={10}>Ten</MenuItem>
-                                                        <MenuItem value={20}>Twenty</MenuItem>
-                                                        <MenuItem value={30}>Thirty</MenuItem>
-                                                </Select>
+                                    <FormControl variant="outlined" className={classes.formControl}>
+                                      <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+                                      <Select
+                                        labelId="demo-simple-select-outlined-label"
+                                        id="demo-simple-select-outlined"
+                                        value={age}
+                                        onChange={handleChange}
+                                        label="Age"
+                                      >
+                                        <MenuItem value="">
+                                          <em>None</em>
+                                        </MenuItem>
+                                        <MenuItem value={10}>Ten</MenuItem>
+                                        <MenuItem value={20}>Twenty</MenuItem>
+                                        <MenuItem value={30}>Thirty</MenuItem>
+                                      </Select>
                                     </FormControl>
                             </Grid>
                 </Grid>

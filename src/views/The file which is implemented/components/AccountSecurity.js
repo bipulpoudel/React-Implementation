@@ -23,7 +23,7 @@ const AccountSecurity = () => {
         </Typography>
     </Grid>
     <Grid item lg={6}></Grid>
-        <Grid item lg={2} sm={6} xs={6} alignContent="flex-end">
+        <Grid item lg={2} sm={6} xs={6} style={{alignContent:'flex-end'}}>
                 <Alert severity="success">Verified</Alert>
             </Grid>
         </Grid>
@@ -36,7 +36,7 @@ const AccountSecurity = () => {
         <p style={{fontSize:'12px',color:'grey',marginLeft:'10px'}}>We'll never share your Number.</p>
     </Grid>
     <Grid item lg={6}></Grid>
-        <Grid item lg={2} sm={6} xs={6} alignContent="flex-end">
+        <Grid item lg={2} sm={6} xs={6} style={{alignContent:'flex-end'}}>
                 <Alert severity="success">Verified</Alert>
             </Grid>
         </Grid>
